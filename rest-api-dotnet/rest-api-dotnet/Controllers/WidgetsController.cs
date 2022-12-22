@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using rest_api_dotnet.Modules;
 
 namespace rest_api_dotnet.Controllers
 {
