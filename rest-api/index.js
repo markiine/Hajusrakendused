@@ -5,30 +5,36 @@ const app = express();
 app.use(cors());        // Avoid CORS errors in browsers
 app.use(express.json()) // Populate req.body
 
-const widgets = [
+let widgets = [
     { id: 1, name: "Cizzbor", price: 29.99 },
     { id: 2, name: "Woowo", price: 26.99 },
     { id: 3, name: "Crazlinger", price: 59.99 },
 ]
 
+//READ
 app.get('/widgets', (req, res) => {
     res.send(widgets)
 })
 
+const getWidgetById = function name (id) {
+    return widgets.find(x => x.id == id)
+}
+
 app.get('/widgets/:id', (req, res) => {
-    const result = widgets.find(x => x.id == req.params.id)
+    const result = getWidgetById(req.params.id)
     if (typeof result === 'undefined') {
         return res.status(404).send({ error: "Widget not found" })
     }
     res.send(result)
 })
 
+//CREATE
 app.post('/widgets', (req, res) => {
     if (!req.body.name || !req.body.price) {
         return res.status(400).send({ error: 'One or all params are missing' })
     }
     let newWidget = {
-        id: widgets.length + 1,
+        id: widgets[widgets.length - 1].id + 1,
         name: req.body.name,
         price: req.body.price
     }
@@ -40,7 +46,7 @@ app.post('/widgets', (req, res) => {
 
 //UPDATE
 app.put('/widgets/:id',(req,res) => {
-    const result = widgets.find(x => x.id == req.params.id)
+    const result = getWidgetById(req.params.id)
     if (typeof result === 'undefined') {
         return res.status(404).send({ error: "Widget not found" })
     }
@@ -55,10 +61,11 @@ app.put('/widgets/:id',(req,res) => {
 
 //DELETE
 app.delete('/widgets/:id',(req,res) => {
-    if (typeof widgets[req.params.id - 1] === 'undefined') {
+    const widgetToDelete = getWidgetById(req.params.id)
+    if (typeof widgetToDelete === 'undefined') {
         return res.status(404).send({ error: "Widget not found" })
     }
-    widgets.splice(req.params.id - 1, 1)
+    widgets = widgets.filter(w => w.id !== widgetToDelete.id)
     res.status(204).send()
 })    
 
