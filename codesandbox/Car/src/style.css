@@ -1,0 +1,15 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+th, td {
+padding: 10px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+
+}
+
+th {
+text-decoration: underline;
+text-transform: uppercase;
+}
