@@ -3,13 +3,28 @@
     <game>
         <title lang="en">Hearthstone</title>
         <price>Free</price>
+        <platforms>
+            <platform>PC</platform>
+            <platform>IOS</platform>
+        </platforms>
     </game>
     <game>
         <title lang="en">Minecraft</title>
         <price>19.99</price>
+        <platforms>
+            <platform>PC</platform>
+            <platform>Xbox</platform>
+            <platform>PlayStation</platform>
+            <platform>Android</platform>
+        </platforms>
     </game>
     <game>
         <title lang="en">Witcher 3</title>
         <price>29.99</price>
+        <platforms>
+            <platform>PC</platform>
+            <platform>Xbox</platform>
+            <platform>PlayStation</platform>
+        </platforms>
     </game>
 </gamelist>
