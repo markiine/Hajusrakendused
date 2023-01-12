@@ -1,0 +1,36 @@
+{
+    "gamelist": {
+      "game": [
+        {
+          "title": {
+                "title": "Hearthstone",
+                "lang": "en"
+            },
+            "price": "Free",
+            "platforms": {
+                "platform": ["PC", "iOS"]
+            }
+        },
+        {
+            "title": {
+                "title": "Minecraft",
+                "lang": "en"
+            },
+            "price": 19.99,
+            "platforms": {
+                "platform": ["PC", "Xbox", "PlayStation", "Android"]
+            }
+        },
+        {
+            "title": {
+                "title": "Witcher 3",
+                "lang": "en"
+            },
+            "price": 29.99,
+            "platforms": {
+                "platform": ["PC", "Xbox", "PlayStation"]
+            }
+        }
+      ]
+    }
+  }
