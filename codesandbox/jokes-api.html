@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <h1>Page of funny jokes</h1>
+    <hr />
+    <button
+      style="background-color: #7bc800;"
+      type="button"
+      onclick="loadDoc()"
+    >
+      Click me for a funny joke
+    </button>
+    <h3 id="category"></h3>
+    <p id="joke"></p>
+    <p id="setup"></p>
+    <p id="delivery"></p>
+    <hr />
+
+    <script>
+      function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          var response = JSON.parse(this.responseText);
+          document.getElementById("category").innerHTML = "";
+          document.getElementById("joke").innerHTML = "";
+          document.getElementById("setup").innerHTML = "";
+          document.getElementById("delivery").innerHTML = "";
+
+          if (response.hasOwnProperty("category")) {
+            document.getElementById("category").innerHTML =
+              "Category: " + response["category"];
+          }
+          if (response.hasOwnProperty("joke")) {
+            document.getElementById("joke").innerHTML = response["joke"];
+          }
+          if (response.hasOwnProperty("setup")) {
+            document.getElementById("setup").innerHTML = response["setup"];
+          }
+          if (response.hasOwnProperty("delivery")) {
+            document.getElementById("delivery").innerHTML =
+              response["delivery"];
+          }
+        };
+        xhttp.open("GET", "https://v2.jokeapi.dev/joke/Any?safe-mode");
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Example</title>
+  </head>
+  <body>
+    <h1>Who is a good dog?</h1>
+    <hr />
+    <button
+      style="color: darkblue; background-color: lightgrey;"
+      type="button"
+      onclick="loadDoc()"
+    >
+      Find out
+    </button>
+    <hr />
+
+    <img
+      id="dog-breed-image"
+      style="max-width: 500px; max-height: 500px;"
+      src=""
+    />
+    <hr />
+
+    <script>
+      function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          var response = JSON.parse(this.responseText);
+          document.getElementById("dog-breed-image").src = response["message"];
+        };
+        xhttp.open("GET", "https://dog.ceo/api/breeds/image/random");
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>
